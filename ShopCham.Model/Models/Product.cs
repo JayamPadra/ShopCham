@@ -24,7 +24,9 @@ namespace ShopCham.Model
 
         [MaxLength(256)]
         public string Image { get; set; }
-        public XElement MoreImages { get; set; }
+
+        [Column(TypeName = "xml")]
+        public string MoreImages { get; set; }
 
         [MaxLength(500)]
         public string Description { get; set; }

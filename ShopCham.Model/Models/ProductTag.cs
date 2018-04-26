@@ -8,11 +8,12 @@ namespace ShopCham.Model
     public class ProductTag
     {
         [Key]
+        [Column(Order = 0)]
         public int ProductID { get; set; }
 
         [Key]
         [MaxLength(50)]
-        [Column(TypeName = "varchar")]
+        [Column(Order = 1, TypeName = "varchar")]
         public string TagCode { get; set; }
 
         [ForeignKey("ProductID")]
