@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShopCham.Data.Repositories
 {
-    public class FooterRepository : RepositoryBase<Footer>
+    public interface IFooterRepository
+    {
+    }
+
+    public class FooterRepository : RepositoryBase<Footer>, IFooterRepository
     {
         public FooterRepository(IDbFactory dbFactory) : base(dbFactory)
         {

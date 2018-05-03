@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShopCham.Data.Repositories
 {
-    public class OrderRepository : RepositoryBase<Order>
+    public interface IOrderRepository
+    {
+    }
+
+    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
         public OrderRepository(IDbFactory dbFactory) : base(dbFactory)
         {

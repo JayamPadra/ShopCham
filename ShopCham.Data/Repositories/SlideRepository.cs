@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShopCham.Data.Repositories
 {
-    public class SlideRepository : RepositoryBase<Slide>
+    public interface ISlideRepository
+    {
+    }
+
+    public class SlideRepository : RepositoryBase<Slide>, ISlideRepository
     {
         public SlideRepository(IDbFactory dbFactory) : base(dbFactory)
         {

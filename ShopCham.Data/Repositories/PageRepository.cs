@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShopCham.Data.Repositories
 {
-    public class PageRepository : RepositoryBase<Page>
+    public interface IOrderRepositoryPageRepository
+    {
+    }
+
+    public class PageRepository : RepositoryBase<Page>, IOrderRepositoryPageRepository
     {
         public PageRepository(IDbFactory dbFactory) : base(dbFactory)
         {

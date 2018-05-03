@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShopCham.Data.Repositories
 {
-    public class SystemConfigRepository : RepositoryBase<SystemConfig>
+    public interface ISystemConfigRepository
+    {
+    }
+
+    public class SystemConfigRepository : RepositoryBase<SystemConfig>, ISystemConfigRepository
     {
         public SystemConfigRepository(IDbFactory dbFactory) : base(dbFactory)
         {

@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace ShopCham.Data.Repositories
 {
-    public class MenuRepository : RepositoryBase<Menu>
+    public interface IMenuRepository
+    {
+    }
+
+    public class MenuRepository : RepositoryBase<Menu>, IMenuRepository
     {
         public MenuRepository(IDbFactory dbFactory) : base(dbFactory)
         {
