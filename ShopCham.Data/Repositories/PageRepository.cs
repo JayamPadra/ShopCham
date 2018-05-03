@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShopCham.Data.Repositories
 {
-    public interface IOrderRepositoryPageRepository
+    public interface IOrderRepositoryPageRepository : IRepository<Page>
     {
     }
 
