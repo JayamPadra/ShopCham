@@ -11,7 +11,7 @@ namespace ShopCham.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory post);
+        PostCategory Add(PostCategory post);
         void Update(PostCategory post);
         void Delete(PostCategory post);
         void Delete(int id);
@@ -19,7 +19,7 @@ namespace ShopCham.Service
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllPaging(int pageIndex, int pageSize, out int totalRow);
         IEnumerable<PostCategory> GetByParentId(int parentId);
-        void SaveChange();
+        void Save();
     }
 
     public class PostCategoryService : IPostCategoryService
@@ -34,9 +34,9 @@ namespace ShopCham.Service
             this._unitOfWork = unitOfWork;
         }
 
-        public void Add(PostCategory post)
+        public PostCategory Add(PostCategory post)
         {
-            this._postCategoryRepository.Add(post);
+            return this._postCategoryRepository.Add(post);
         }
 
         public void Update(PostCategory post)
@@ -74,7 +74,7 @@ namespace ShopCham.Service
             return _postCategoryRepository.GetMulti(p => p.Status && p.ParentID == parentId);
         }
 
-        public void SaveChange()
+        public void Save()
         {
             _unitOfWork.Commit();
         }        

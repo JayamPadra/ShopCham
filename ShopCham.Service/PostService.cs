@@ -20,7 +20,7 @@ namespace ShopCham.Service
         IEnumerable<Post> GetAllPaging(int pageIndex, int pageSize, out int totalRow);
         IEnumerable<Post> GetByTagPaging(string tag, int pageIndex, int pageSize, out int totalRow);
         IEnumerable<Post> GetByCategoryPaging(int categoryId, int pageIndex, int pageSize, out int totalRow);
-        void SaveChange();
+        void Save();
     }
 
     public class PostService : IPostService
@@ -80,7 +80,7 @@ namespace ShopCham.Service
             return _postRepository.GetMultiPaging(p => p.Status && p.PostCategoryID == categoryId, out totalRow, pageIndex, pageSize);
         }
 
-        public void SaveChange()
+        public void Save()
         {
             _unitOfWork.Commit();
         }

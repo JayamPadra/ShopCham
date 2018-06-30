@@ -19,7 +19,7 @@ namespace ShopCham.Service
         IEnumerable<ProductCategory> GetAll();
         IEnumerable<ProductCategory> GetAllPaging(int pageIndex, int pageSize, out int totalRow);
         IEnumerable<ProductCategory> GetByParentId(int parentId);
-        void SaveChange();
+        void Save();
     }
 
     public class ProductCategoryService : IProductCategoryService
@@ -74,7 +74,7 @@ namespace ShopCham.Service
             return _productCategoryRepository.GetMulti(p => p.Status && p.ParentID == parentId);
         }
 
-        public void SaveChange()
+        public void Save()
         {
             _unitOfWork.Commit();
         }        

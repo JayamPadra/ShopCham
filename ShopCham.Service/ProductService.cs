@@ -19,7 +19,7 @@ namespace ShopCham.Service
         IEnumerable<Product> GetAll();
         IEnumerable<Product> GetAllPaging(int pageIndex, int pageSize, out int totalRow);
         IEnumerable<Product> GetByTagPaging(string tag, int pageIndex, int pageSize, out int totalRow);
-        void SaveChange();
+        void Save();
     }
 
     public class ProductService : IProductService
@@ -74,7 +74,7 @@ namespace ShopCham.Service
             return _productRepository.GetByTag(tag, pageIndex, pageSize, out totalRow);
         }
 
-        void IProductService.SaveChange()
+        void IProductService.Save()
         {
             _unitOfWork.Commit();
         }        
