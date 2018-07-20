@@ -10,7 +10,7 @@ namespace ShopCham.Data
 {
     public class ShopChamDbContext: DbContext
     {
-        public ShopChamDbContext() : base("ShopChamDB")
+        public ShopChamDbContext() : base("ShopCham")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }

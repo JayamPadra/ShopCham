@@ -61,7 +61,7 @@ namespace ShopCham.Service
 
         public IEnumerable<PostCategory> GetAll()
         {
-            return _postCategoryRepository.GetAll(new string[] { "PostCategory" });
+            return _postCategoryRepository.GetAll();//new string[] { "PostCategory" }
         }
 
         public IEnumerable<PostCategory> GetAllPaging(int pageIndex, int pageSize, out int totalRow)

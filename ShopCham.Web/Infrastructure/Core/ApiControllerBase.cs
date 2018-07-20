@@ -21,13 +21,13 @@ namespace ShopCham.Web.Infrastructure.Core
             this._errorService = errorService;
         }
 
-        protected HttpResponseMessage CreateHttpRespone(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
+        protected HttpResponseMessage CreateHttpResponse(HttpRequestMessage requestMessage, Func<HttpResponseMessage> function)
         {
-            HttpResponseMessage respone = null;
+            HttpResponseMessage response = null;
 
             try
             {
-                respone = function.Invoke();
+                response = function.Invoke();
             }
             catch (DbEntityValidationException ex)
             {
@@ -41,20 +41,20 @@ namespace ShopCham.Web.Infrastructure.Core
                 }
 
                 this.LogError(ex);
-                respone = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
             }
             catch (DbUpdateException ex)
             {
                 this.LogError(ex);
-                respone = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
             }
             catch (Exception ex)
             {
                 this.LogError(ex);
-                respone = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
             }
 
-            return respone;
+            return response;
         }
 
         private void LogError(Exception ex)

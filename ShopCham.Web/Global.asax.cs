@@ -13,6 +13,7 @@ namespace ShopCham.Web
     {
         protected void Application_Start()
         {
+            IOCConfig.AutofacConfig();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

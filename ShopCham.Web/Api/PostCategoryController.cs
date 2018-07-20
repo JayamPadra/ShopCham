@@ -22,26 +22,20 @@ namespace ShopCham.Web.Api
         [Route("getall")]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
-                HttpResponseMessage respone = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
-                    respone = request.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+                var listCategory = _postCategoryService.GetAll();
 
-                return respone;
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+
+
+                return response;
             });
         }
 
         public HttpResponseMessage Post(HttpRequestMessage request, PostCategory postCategory)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage respone = null;
                 if (ModelState.IsValid)
@@ -61,7 +55,7 @@ namespace ShopCham.Web.Api
 
         public HttpResponseMessage Put(HttpRequestMessage request, PostCategory postCategory)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage respone = null;
                 if (ModelState.IsValid)
@@ -81,7 +75,7 @@ namespace ShopCham.Web.Api
 
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
-            return CreateHttpRespone(request, () =>
+            return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage respone = null;
                 if (ModelState.IsValid)
